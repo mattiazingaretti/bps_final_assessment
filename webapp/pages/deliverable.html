@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliverable | DTV Business Process Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dtv-primary': '#003366',
+                        'dtv-secondary': '#0066CC',
+                        'dtv-accent': '#00A3E0',
+                        'dtv-light': '#E6F2FF',
+                        'dtv-dark': '#001A33',
+                        'critical': '#DC2626',
+                        'high': '#F59E0B',
+                        'medium': '#3B82F6',
+                        'low': '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dtv-primary text-white sticky top-0 z-50 shadow-lg no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-dtv-accent rounded-lg flex items-center justify-center font-bold text-xl">DTV</div>
+                        <span class="font-semibold text-lg hidden sm:block">Business Process Report</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Home</a>
+                    <a href="process-diagram.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Process Diagram</a>
+                    <a href="process-analysis.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Analysis</a>
+                    <a href="action-plan.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Action Plan</a>
+                    <a href="deliverable.html" class="px-4 py-2 rounded-lg bg-dtv-secondary text-white font-medium">Content Structure</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-dtv-secondary/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dtv-dark">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Home</a>
+                <a href="process-diagram.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Process Diagram</a>
+                <a href="process-analysis.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Analysis</a>
+                <a href="action-plan.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Action Plan</a>
+                <a href="deliverable.html" class="block px-4 py-2 rounded-lg bg-dtv-secondary">Content Structure</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-dtv-primary to-dtv-secondary text-white py-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-dtv-light text-sm mb-4">
+                <a href="../index.html" class="hover:text-white">Home</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span>Deliverable</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-dtv-accent/20 text-dtv-light text-sm font-medium rounded-full mb-4">
+                        Task 4 - 10 Marks
+                    </span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Deliverable Structure</h1>
+                    <p class="text-dtv-light text-lg">Cover Page, Transmittal Letter & Document Components</p>
+                </div>
+                <div class="hidden md:block">
+                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Tabs Navigation -->
+        <div class="mb-8 no-print">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-4 overflow-x-auto" aria-label="Tabs">
+                    <button data-tab-target="toc" class="tab-button active px-6 py-3 rounded-t-lg font-medium whitespace-nowrap" style="background-color: #003366; color: #ffffff;">
+                        Table of Contents
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Table of Contents Tab -->
+        <div data-tab-content="toc" class="tab-content active">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl mx-auto">
+                <div class="bg-dtv-primary px-8 py-6">
+                    <h2 class="text-2xl font-bold text-white">Table of Contents</h2>
+                </div>
+                <div class="p-8 md:p-12">
+                    <div class="space-y-4">
+                        <!-- Section 1 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">1. Executive Summary</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>1.1 Background</span></div>
+                                <div><span>1.2 Scope of Work</span></div>
+                                <div><span>1.3 Key Findings</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">2. Business Process Diagram</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>2.1 Process Overview</span></div>
+                                <div><span>2.2 Actors & Roles</span></div>
+                                <div><span>2.3 Process Flow Diagram (BPMN)</span></div>
+                                <div><span>2.4 Decision Points Analysis</span></div>
+                                <div><span>2.5 Documented Assumptions</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">3. Process Analysis - Issues</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>3.1 ISS-001: Data Security Vulnerability</span></div>
+                                <div><span>3.2 ISS-002: Inconsistent Evaluation Criteria</span></div>
+                                <div><span>3.3 ISS-003: Undocumented Process</span></div>
+                                <div><span>3.4 ISS-004: Manual Legacy Systems</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Section 4 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">4. Improvement Opportunities</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>4.1 IMP-001: Secure HRIS Implementation</span></div>
+                                <div><span>4.2 IMP-002: Standardized Evaluation Framework</span></div>
+                                <div><span>4.3 IMP-003: Process Documentation</span></div>
+                                <div><span>4.4 IMP-004: Workflow Automation</span></div>
+                                <div><span>4.5 Risk Heat Map</span></div>
+                                <div><span>4.6 Prioritization Matrix</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Section 5 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">5. Action Plan Proposal</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>5.1 Objectives & Scope</span></div>
+                                <div><span>5.2 Work Breakdown Structure (WBS)</span></div>
+                                <div><span>5.3 RACI Matrix</span></div>
+                                <div><span>5.4 Project Timeline - Gantt Chart</span></div>
+                                <div><span>5.5 Budget Estimate</span></div>
+                                <div><span>5.6 Risk Register</span></div>
+                                <div><span>5.7 Success Metrics</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Section 6 -->
+                        <div class="border-b border-gray-100 pb-4">
+                            <span class="font-bold text-dtv-primary text-lg">6. Conclusion & Recommendations</span>
+                        </div>
+
+                        <!-- Appendices -->
+                        <div class="pt-4">
+                            <span class="font-bold text-dtv-primary text-lg">Appendices</span>
+                            <div class="ml-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <div><span>Appendix A: Assumptions Log</span></div>
+                                <div><span>Appendix B: Detailed Activity Descriptions</span></div>
+                                <div><span>Appendix C: RACI Matrix (Detailed)</span></div>
+                                <div><span>Appendix D: Glossary</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-12 no-print">
+            <a href="action-plan.html" class="flex items-center text-dtv-secondary hover:text-dtv-primary transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Previous: Action Plan
+            </a>
+            <a href="../index.html" class="flex items-center px-6 py-3 bg-dtv-primary text-white rounded-lg hover:bg-dtv-secondary transition-colors">
+                Back to Home
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dtv-dark text-white mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">DATA-7005 / DBI-7004 - Business Problem Solving</p>
+                    <p class="text-sm text-gray-400">Assessment 2 - Business Process Diagnosis + Action Plan Report</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-400">December 2024</p>
+                    <p class="text-sm text-gray-500">Prepared for DTV Corporation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

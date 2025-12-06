@@ -1,0 +1,461 @@
+/* DTV Business Process Report - Custom Styles */
+
+/* ===== Base Styles ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ===== Mermaid Diagram Styles ===== */
+.mermaid {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== Gantt Chart Container ===== */
+.gantt-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gantt-container .mermaid svg {
+    min-width: 800px;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #003366;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0066CC;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* ===== Table Styles ===== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    background-color: #003366;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.875rem;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* ===== Badge Styles ===== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-critical {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+.badge-high {
+    background-color: #FEF3C7;
+    color: #D97706;
+}
+
+.badge-medium {
+    background-color: #DBEAFE;
+    color: #2563EB;
+}
+
+.badge-low {
+    background-color: #D1FAE5;
+    color: #059669;
+}
+
+.badge-urgent {
+    background-color: #DC2626;
+    color: white;
+}
+
+/* ===== Card Hover Effects ===== */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Issue Cards ===== */
+.issue-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.issue-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.issue-card.critical::before {
+    background-color: #DC2626;
+}
+
+.issue-card.high::before {
+    background-color: #F59E0B;
+}
+
+.issue-card.medium::before {
+    background-color: #3B82F6;
+}
+
+.issue-card.low::before {
+    background-color: #10B981;
+}
+
+/* ===== Timeline Styles ===== */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #003366, #00A3E0);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: #003366;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #003366;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+/* ===== Tabs ===== */
+.tab-button {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.tab-button:hover {
+    color: #003366;
+}
+
+.tab-button.active {
+    color: #003366;
+}
+
+.tab-button.active::after {
+    background-color: #003366;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* ===== Accordion ===== */
+.accordion-header {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f8fafc;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.open {
+    max-height: 2000px;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.open .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* ===== Progress Bar ===== */
+.progress-bar {
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* ===== Risk Matrix ===== */
+.risk-matrix {
+    display: grid;
+    grid-template-columns: auto repeat(3, 1fr);
+    gap: 2px;
+}
+
+.risk-cell {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.risk-cell.header {
+    background-color: #003366;
+    color: white;
+    font-weight: 600;
+}
+
+.risk-cell.low-risk {
+    background-color: #D1FAE5;
+}
+
+.risk-cell.medium-risk {
+    background-color: #FEF3C7;
+}
+
+.risk-cell.high-risk {
+    background-color: #FECACA;
+}
+
+.risk-cell.critical-risk {
+    background-color: #DC2626;
+    color: white;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    nav, footer, .no-print {
+        display: none !important;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+
+    body {
+        font-size: 12pt;
+    }
+
+    .mermaid svg {
+        max-width: 100% !important;
+    }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 640px) {
+    .data-table {
+        font-size: 0.75rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem;
+    }
+
+    .mermaid {
+        padding: 0.5rem;
+    }
+}
+
+/* ===== Tooltip ===== */
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e293b;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tooltip .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1e293b;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ===== Letter Styles ===== */
+.letter-container {
+    background: linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.letter-header {
+    border-bottom: 2px solid #003366;
+}
+
+.signature-line {
+    border-top: 1px solid #1e293b;
+    width: 200px;
+}
+
+/* ===== Cover Page ===== */
+.cover-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #003366 0%, #0066CC 50%, #00A3E0 100%);
+}
+
+/* ===== Loading Spinner ===== */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #003366;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

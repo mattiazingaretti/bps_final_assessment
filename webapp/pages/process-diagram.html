@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Diagram | DTV Business Process Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dtv-primary': '#003366',
+                        'dtv-secondary': '#0066CC',
+                        'dtv-accent': '#00A3E0',
+                        'dtv-light': '#E6F2FF',
+                        'dtv-dark': '#001A33',
+                        'critical': '#DC2626',
+                        'high': '#F59E0B',
+                        'medium': '#3B82F6',
+                        'low': '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dtv-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-dtv-accent rounded-lg flex items-center justify-center font-bold text-xl">
+                            DTV
+                        </div>
+                        <span class="font-semibold text-lg hidden sm:block">Business Process Report</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Home</a>
+                    <a href="process-diagram.html" class="px-4 py-2 rounded-lg bg-dtv-secondary text-white font-medium">Process Diagram</a>
+                    <a href="process-analysis.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Analysis</a>
+                    <a href="action-plan.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Action Plan</a>
+                    <a href="deliverable.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Content Structure</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-dtv-secondary/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dtv-dark">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Home</a>
+                <a href="process-diagram.html" class="block px-4 py-2 rounded-lg bg-dtv-secondary">Process Diagram</a>
+                <a href="process-analysis.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Analysis</a>
+                <a href="action-plan.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Action Plan</a>
+                <a href="deliverable.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Content Structure</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-dtv-primary to-dtv-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-dtv-light text-sm mb-4">
+                <a href="../index.html" class="hover:text-white">Home</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span>Process Diagram</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-dtv-accent/20 text-dtv-light text-sm font-medium rounded-full mb-4">
+                        Task 1 - 20 Marks
+                    </span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Business Process Diagram</h1>
+                    <p class="text-dtv-light text-lg">BPMN Flowchart: Subscribing to a New Language Course</p>
+                </div>
+                <div class="hidden md:block">
+                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Process Overview Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">1.1 Process Overview</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        The <strong>"Subscribing to a new Language Course"</strong> process enables DTV employees to request enrollment
+                        in English language courses to enhance their professional skills. The process involves multiple stakeholders
+                        and includes approval workflows, progress monitoring, and reimbursement decisions.
+                    </p>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="bg-dtv-light rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-dtv-primary">4</div>
+                            <div class="text-sm text-gray-600">Main Activities</div>
+                        </div>
+                        <div class="bg-dtv-light rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-dtv-primary">7</div>
+                            <div class="text-sm text-gray-600">Stakeholders</div>
+                        </div>
+                        <div class="bg-dtv-light rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-dtv-primary">4</div>
+                            <div class="text-sm text-gray-600">Decision Points</div>
+                        </div>
+                        <div class="bg-dtv-light rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-dtv-primary">3</div>
+                            <div class="text-sm text-gray-600">End Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actors Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">1.2 Actors & Roles</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Actor</th>
+                                    <th>Role in Process</th>
+                                    <th>Swim Lane</th>
+                                    <th>Key Responsibilities</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">Employee</td>
+                                    <td>Process Initiator</td>
+                                    <td><span class="badge badge-medium">Lane 1</span></td>
+                                    <td>Submit request, attend course, achieve objectives</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">Manager/Director</td>
+                                    <td>First Approver</td>
+                                    <td><span class="badge badge-medium">Lane 2</span></td>
+                                    <td>Evaluate request based on role & responsibilities</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">HRBP</td>
+                                    <td>HR Validator</td>
+                                    <td><span class="badge badge-medium">Lane 3</span></td>
+                                    <td>Validate needs, sign and forward to HR</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">Talent Management</td>
+                                    <td>Second Approver & Monitor</td>
+                                    <td><span class="badge badge-medium">Lane 4</span></td>
+                                    <td>Final approval, track progress, decide reimbursement</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">Finance</td>
+                                    <td>Payment Processor</td>
+                                    <td><span class="badge badge-medium">Lane 5</span></td>
+                                    <td>Process reimbursement payments</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">Language Institute</td>
+                                    <td>External Provider</td>
+                                    <td><span class="badge badge-low">External</span></td>
+                                    <td>Deliver training, send progress reports</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium text-dtv-primary">HR Department</td>
+                                    <td>Process Owner</td>
+                                    <td><span class="badge badge-medium">Lane 6</span></td>
+                                    <td>Oversee process, maintain records</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Diagram Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white">1.3 Process Flow Diagram</h2>
+                    <span class="text-sm text-dtv-light">Scroll horizontally to view full diagram</span>
+                </div>
+                <div class="p-4 md:p-8 overflow-x-auto">
+                    <div class="mermaid min-w-[1200px]">
+flowchart TB
+    subgraph EMPLOYEE["<b>EMPLOYEE</b>"]
+        direction TB
+        START((Start)) --> A1[Identify need for<br/>English improvement]
+        A1 --> A2[Complete English Language<br/>Course Registration Form]
+        A2 --> A3[Send form via email<br/>to Manager/Director]
+    end
+
+    subgraph MANAGER["<b>MANAGER / DIRECTOR</b>"]
+        direction TB
+        B1[Receive registration<br/>request form]
+        B1 --> B2{Approve<br/>training?}
+        B2 -->|NO| B3[Document rejection<br/>reasons]
+        B3 --> B4[Notify Employee<br/>of rejection]
+        B2 -->|YES| B5[Complete justification<br/>for approval]
+        B5 --> B6[Forward to HRBP]
+    end
+
+    subgraph HRBP["<b>HR BUSINESS PARTNER</b>"]
+        direction TB
+        C1[Receive approved<br/>request]
+        C1 --> C2[Evaluate training<br/>needs]
+        C2 --> C3[Sign request form]
+        C3 --> C4[Forward to<br/>Talent Management]
+    end
+
+    subgraph TALENT["<b>TALENT MANAGEMENT</b>"]
+        direction TB
+        D1[Receive authorized<br/>request]
+        D1 --> D2[Review roles &<br/>responsibilities]
+        D2 --> D3{Second<br/>approval?}
+        D3 -->|NO| D4[Document rejection<br/>reasons]
+        D4 --> D5[Notify Employee<br/>& Manager]
+        D3 -->|YES| D6[Contact Employee<br/>for next steps]
+        D6 --> D7[Register Employee<br/>in course]
+        D7 --> D8[Request Employee to<br/>sign objectives]
+    end
+
+    subgraph COURSE["<b>COURSE EXECUTION & MONITORING</b>"]
+        direction TB
+        E1[Employee attends<br/>course]
+        E1 --> E2[/Receive progress<br/>report every 6 months/]
+        E2 --> E3[Compare with<br/>initial level]
+        E3 --> E4[Record in Excel<br/>English Students 2012]
+        E4 --> E5[Store in Google Drive<br/>with public access]
+        E5 --> E6{Objectives<br/>achieved?}
+        E6 -->|YES| E7[Send positive<br/>feedback email]
+        E7 --> E8[Send reimbursement<br/>form to Finance]
+        E6 -->|NO| E9[Send feedback email]
+        E9 --> E10[Schedule meeting<br/>for action plan]
+        E10 --> E11[Suspend<br/>reimbursement]
+    end
+
+    subgraph FINANCE["<b>FINANCE</b>"]
+        direction TB
+        F1[Receive reimbursement<br/>request]
+        F1 --> F2[Process payment]
+        F2 --> F3[Issue reimbursement<br/>to Employee]
+    end
+
+    %% Connections between swimlanes
+    A3 --> B1
+    B4 --> END1((End:<br/>Rejected by<br/>Manager))
+    B6 --> C1
+    C4 --> D1
+    D5 --> END2((End:<br/>Rejected by<br/>TM))
+    D8 --> E1
+    E8 --> F1
+    F3 --> END3((End:<br/>Success))
+    E11 --> END4((End:<br/>Action Plan<br/>Required))
+
+    %% Styling
+    classDef startEnd fill:#003366,stroke:#001A33,color:#fff,stroke-width:2px
+    classDef process fill:#E6F2FF,stroke:#0066CC,color:#003366,stroke-width:1px
+    classDef decision fill:#FEF3C7,stroke:#D97706,color:#92400E,stroke-width:2px
+    classDef document fill:#D1FAE5,stroke:#059669,color:#065F46,stroke-width:1px
+    classDef warning fill:#FEE2E2,stroke:#DC2626,color:#991B1B,stroke-width:2px
+    classDef external fill:#F3E8FF,stroke:#7C3AED,color:#5B21B6,stroke-width:1px
+
+    class START,END1,END2,END3,END4 startEnd
+    class A1,A2,A3,B1,B3,B4,B5,B6,C1,C2,C3,C4,D1,D2,D4,D5,D6,D7,D8,E1,E3,E7,E9,E10,F1,F2,F3 process
+    class B2,D3,E6 decision
+    class E2,E4 document
+    class E5,E11 warning
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4 border-t">
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-dtv-primary mr-2"></div>
+                            <span>Start/End Events</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-dtv-light border border-dtv-secondary mr-2"></div>
+                            <span>Process Tasks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-amber-100 border border-amber-500 mr-2"></div>
+                            <span>Decision Points</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-red-100 border border-red-500 mr-2"></div>
+                            <span>Risk Areas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Points Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">1.4 Decision Points Analysis</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Decision Point 1 -->
+                        <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-dtv-light text-dtv-primary text-sm font-bold rounded-full">DP-001</span>
+                                <span class="text-2xl">🔀</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Manager Approval</h3>
+                            <p class="text-sm text-gray-600 mb-4">First-level approval based on employee's role and responsibilities.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-start">
+                                    <span class="text-green-600 font-medium w-16">YES:</span>
+                                    <span class="text-gray-600">Forward to HRBP with justification</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-red-600 font-medium w-16">NO:</span>
+                                    <span class="text-gray-600">Notify employee with rejection reasons</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decision Point 2 -->
+                        <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-dtv-light text-dtv-primary text-sm font-bold rounded-full">DP-002</span>
+                                <span class="text-2xl">🔀</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Talent Management Approval</h3>
+                            <p class="text-sm text-gray-600 mb-4">Second-level review considering daily tasks and role alignment.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-start">
+                                    <span class="text-green-600 font-medium w-16">YES:</span>
+                                    <span class="text-gray-600">Register employee and coordinate enrollment</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-red-600 font-medium w-16">NO:</span>
+                                    <span class="text-gray-600">Notify employee and manager with reasons</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decision Point 3 -->
+                        <div class="border rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-dtv-light text-dtv-primary text-sm font-bold rounded-full">DP-003</span>
+                                <span class="text-2xl">🔀</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Objectives Achievement</h3>
+                            <p class="text-sm text-gray-600 mb-4">Evaluation of progress based on TOEIC results and attendance.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-start">
+                                    <span class="text-green-600 font-medium w-16">YES:</span>
+                                    <span class="text-gray-600">Approve reimbursement, send to Finance</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-red-600 font-medium w-16">NO:</span>
+                                    <span class="text-gray-600">Create action plan, suspend reimbursement</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Control Weakness -->
+                        <div class="border-2 border-red-200 bg-red-50 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-bold rounded-full">CONTROL GAP</span>
+                                <span class="text-2xl">⚠️</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Inconsistent Criteria</h3>
+                            <p class="text-sm text-gray-600 mb-4">No standardized criteria for DP-003. Some analysts use fortnightly meetings, others rely solely on TOEIC scores.</p>
+                            <div class="text-sm text-red-700 font-medium">
+                                Audit Risk: Subjective decisions leading to unfair treatment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assumptions Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">1.5 Documented Assumptions</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                                Process Scope
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Process applies uniformly across all regions (Latin America, Western Europe, US)</li>
+                                <li>• Only English language courses are covered by this process</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                                Stakeholders
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Each employee has a designated Manager/Director</li>
+                                <li>• HRBP is available for each business area</li>
+                                <li>• Single Language Institute provider</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                                Timeline
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Approval process takes 5-10 business days</li>
+                                <li>• Progress reports received every 6 months</li>
+                                <li>• TOEIC exam required for course completion</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">4</span>
+                                Financial
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Reimbursement is conditional on objectives achievement</li>
+                                <li>• Employee pays upfront, company reimburses upon completion</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">5</span>
+                                Data Management
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Excel file "English Students 2012" is the single source of truth</li>
+                                <li>• Google Drive storage with current access settings</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-5">
+                            <h4 class="font-bold text-dtv-primary mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-dtv-primary text-white rounded-full flex items-center justify-center text-sm mr-3">6</span>
+                                Communications
+                            </h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• All formal communications via email</li>
+                                <li>• Physical forms for reimbursement requests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center">
+            <a href="../index.html" class="flex items-center text-dtv-secondary hover:text-dtv-primary transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+            <a href="process-analysis.html" class="flex items-center px-6 py-3 bg-dtv-primary text-white rounded-lg hover:bg-dtv-secondary transition-colors">
+                Next: Process Analysis
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dtv-dark text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">DATA-7005 / DBI-7004 - Business Problem Solving</p>
+                    <p class="text-sm text-gray-400">Assessment 2 - Business Process Diagnosis + Action Plan Report</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-400">December 2024</p>
+                    <p class="text-sm text-gray-500">Prepared for DTV Corporation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

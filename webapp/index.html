@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTV Business Process Diagnosis | Assessment Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dtv-primary': '#003366',
+                        'dtv-secondary': '#0066CC',
+                        'dtv-accent': '#00A3E0',
+                        'dtv-light': '#E6F2FF',
+                        'dtv-dark': '#001A33',
+                        'critical': '#DC2626',
+                        'high': '#F59E0B',
+                        'medium': '#3B82F6',
+                        'low': '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dtv-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-dtv-accent rounded-lg flex items-center justify-center font-bold text-xl">
+                            DTV
+                        </div>
+                        <span class="font-semibold text-lg hidden sm:block">Business Process Report</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 rounded-lg bg-dtv-secondary text-white font-medium transition-colors">
+                        Home
+                    </a>
+                    <a href="pages/process-diagram.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">
+                        Process Diagram
+                    </a>
+                    <a href="pages/process-analysis.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">
+                        Analysis
+                    </a>
+                    <a href="pages/action-plan.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">
+                        Action Plan
+                    </a>
+                    <a href="pages/deliverable.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">
+                        Content Structure
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-dtv-secondary/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dtv-dark">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block px-4 py-2 rounded-lg bg-dtv-secondary">Home</a>
+                <a href="pages/process-diagram.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Process Diagram</a>
+                <a href="pages/process-analysis.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Analysis</a>
+                <a href="pages/action-plan.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Action Plan</a>
+                <a href="pages/deliverable.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Content Structure</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-br from-dtv-primary via-dtv-secondary to-dtv-accent text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="text-center">
+                <p class="text-dtv-light text-sm font-medium uppercase tracking-wider mb-4">
+                    DATA-7005 / DBI-7004 - Business Problem Solving
+                </p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    Business Process Diagnosis
+                </h1>
+                <h2 class="text-xl md:text-2xl text-dtv-light mb-8">
+                    Action Plan Report for DTV Corporation
+                </h2>
+                <p class="text-lg text-white/80 max-w-2xl mx-auto mb-10">
+                    Training & Development Process Analysis: Subscribing to a New Language Course
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="pages/process-diagram.html" class="px-8 py-3 bg-white text-dtv-primary font-semibold rounded-lg hover:bg-dtv-light transition-colors shadow-lg">
+                        View Process Diagram
+                    </a>
+                    <a href="pages/process-analysis.html" class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors">
+                        Explore Analysis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Executive Summary Card -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">Executive Summary</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold text-dtv-primary mb-3">Background</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                DTV, a leading Technology, Media & Telecommunications company, is preparing for its first Regional Internal Audit.
+                                This report analyzes the <strong>"Subscribing to a new Language Course"</strong> process within the Training & Development department,
+                                identifying critical issues and providing actionable improvement recommendations.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-dtv-primary mb-3">Scope of Work</h3>
+                            <ul class="text-gray-600 space-y-2">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-dtv-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Process mapping and documentation
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-dtv-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Issue identification and risk assessment
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-dtv-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Improvement opportunity analysis
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-dtv-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Action plan development with timeline
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings Grid -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-dtv-primary mb-6">Key Findings</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Critical Issue Card -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-critical hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-red-100 text-critical text-xs font-bold rounded-full uppercase">Critical</span>
+                            <span class="text-2xl">🔐</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Data Security Vulnerability</h3>
+                        <p class="text-sm text-gray-600">Sensitive employee data stored on public Google Drive with unrestricted access.</p>
+                    </div>
+                </div>
+
+                <!-- High Issue Card -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-high hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-amber-100 text-high text-xs font-bold rounded-full uppercase">High</span>
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Inconsistent Evaluation</h3>
+                        <p class="text-sm text-gray-600">No standardized criteria for determining reimbursement eligibility.</p>
+                    </div>
+                </div>
+
+                <!-- Medium Issue Card -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-medium hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-medium text-xs font-bold rounded-full uppercase">Medium</span>
+                            <span class="text-2xl">📋</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Undocumented Process</h3>
+                        <p class="text-sm text-gray-600">Process relies on tribal knowledge with no formal documentation.</p>
+                    </div>
+                </div>
+
+                <!-- Medium Issue Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-medium hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-medium text-xs font-bold rounded-full uppercase">Medium</span>
+                            <span class="text-2xl">⚙️</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-2">Manual Legacy Systems</h3>
+                        <p class="text-sm text-gray-600">Outdated Excel files and paper-based reimbursement forms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Cards -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-dtv-primary mb-6">Report Sections</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Task 1 Card -->
+                <a href="pages/process-diagram.html" class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="h-2 bg-gradient-to-r from-dtv-primary to-dtv-secondary"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-dtv-light rounded-lg flex items-center justify-center mb-4 group-hover:bg-dtv-primary transition-colors">
+                            <svg class="w-6 h-6 text-dtv-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-dtv-accent uppercase tracking-wider">Task 1</span>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1 mb-2">Process Diagram</h3>
+                        <p class="text-sm text-gray-600">BPMN flowchart of the current language course enrollment process.</p>
+                        <div class="mt-4 flex items-center text-dtv-secondary font-medium text-sm">
+                            View Diagram
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Task 2 Card -->
+                <a href="pages/process-analysis.html" class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="h-2 bg-gradient-to-r from-dtv-secondary to-dtv-accent"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-dtv-light rounded-lg flex items-center justify-center mb-4 group-hover:bg-dtv-primary transition-colors">
+                            <svg class="w-6 h-6 text-dtv-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-dtv-accent uppercase tracking-wider">Task 2</span>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1 mb-2">Process Analysis</h3>
+                        <p class="text-sm text-gray-600">4 issues and 4 improvement opportunities identified.</p>
+                        <div class="mt-4 flex items-center text-dtv-secondary font-medium text-sm">
+                            View Analysis
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Task 3 Card -->
+                <a href="pages/action-plan.html" class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="h-2 bg-gradient-to-r from-dtv-accent to-low"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-dtv-light rounded-lg flex items-center justify-center mb-4 group-hover:bg-dtv-primary transition-colors">
+                            <svg class="w-6 h-6 text-dtv-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-dtv-accent uppercase tracking-wider">Task 3</span>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1 mb-2">Action Plan</h3>
+                        <p class="text-sm text-gray-600">12-week implementation plan with Gantt chart.</p>
+                        <div class="mt-4 flex items-center text-dtv-secondary font-medium text-sm">
+                            View Plan
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Task 4 Card -->
+                <a href="pages/deliverable.html" class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="h-2 bg-gradient-to-r from-low to-dtv-primary"></div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-dtv-light rounded-lg flex items-center justify-center mb-4 group-hover:bg-dtv-primary transition-colors">
+                            <svg class="w-6 h-6 text-dtv-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-dtv-accent uppercase tracking-wider">Task 4</span>
+                        <h3 class="text-lg font-bold text-gray-900 mt-1 mb-2">Deliverable</h3>
+                        <p class="text-sm text-gray-600">Cover page, transmittal letter, and document structure.</p>
+                        <div class="mt-4 flex items-center text-dtv-secondary font-medium text-sm">
+                            View Document
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Project Stats -->
+        <section class="bg-dtv-primary rounded-2xl p-8 text-white">
+            <h2 class="text-2xl font-bold mb-8 text-center">Project Overview</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-dtv-accent mb-2">4</div>
+                    <div class="text-sm text-white/70">Critical Issues</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-dtv-accent mb-2">4</div>
+                    <div class="text-sm text-white/70">Improvements</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-dtv-accent mb-2">12</div>
+                    <div class="text-sm text-white/70">Weeks Timeline</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-dtv-accent mb-2">7</div>
+                    <div class="text-sm text-white/70">Stakeholders</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dtv-dark text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">
+                        DATA-7005 / DBI-7004 - Business Problem Solving
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        Assessment 2 - Business Process Diagnosis + Action Plan Report
+                    </p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-400">December 2024</p>
+                    <p class="text-sm text-gray-500">Prepared for DTV Corporation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

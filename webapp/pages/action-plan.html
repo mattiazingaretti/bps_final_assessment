@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Plan | DTV Business Process Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dtv-primary': '#003366',
+                        'dtv-secondary': '#0066CC',
+                        'dtv-accent': '#00A3E0',
+                        'dtv-light': '#E6F2FF',
+                        'dtv-dark': '#001A33',
+                        'critical': '#DC2626',
+                        'high': '#F59E0B',
+                        'medium': '#3B82F6',
+                        'low': '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dtv-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-dtv-accent rounded-lg flex items-center justify-center font-bold text-xl">DTV</div>
+                        <span class="font-semibold text-lg hidden sm:block">Business Process Report</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Home</a>
+                    <a href="process-diagram.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Process Diagram</a>
+                    <a href="process-analysis.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Analysis</a>
+                    <a href="action-plan.html" class="px-4 py-2 rounded-lg bg-dtv-secondary text-white font-medium">Action Plan</a>
+                    <a href="deliverable.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Content Structure</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-dtv-secondary/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dtv-dark">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Home</a>
+                <a href="process-diagram.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Process Diagram</a>
+                <a href="process-analysis.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Analysis</a>
+                <a href="action-plan.html" class="block px-4 py-2 rounded-lg bg-dtv-secondary">Action Plan</a>
+                <a href="deliverable.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Content Structure</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-dtv-primary to-dtv-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-dtv-light text-sm mb-4">
+                <a href="../index.html" class="hover:text-white">Home</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span>Action Plan</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-dtv-accent/20 text-dtv-light text-sm font-medium rounded-full mb-4">
+                        Task 3 - 30 Marks
+                    </span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Action Plan Proposal</h1>
+                    <p class="text-dtv-light text-lg">Data Security Remediation Project - 12 Week Implementation</p>
+                </div>
+                <div class="hidden md:block">
+                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Executive Summary -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">3.1 Executive Summary</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-bold text-dtv-primary mb-3">Objective</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                Migrate sensitive employee data from unsecured Google Drive storage to an enterprise-grade
+                                HRIS with role-based access control, ensuring GDPR compliance and audit readiness for the
+                                upcoming Regional Internal Audit.
+                            </p>
+
+                            <h3 class="font-bold text-dtv-primary mb-3">Scope</h3>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-green-50 rounded-lg p-3">
+                                    <h4 class="font-semibold text-green-800 mb-2">In Scope</h4>
+                                    <ul class="text-green-700 space-y-1">
+                                        <li>• Language course data</li>
+                                        <li>• Employee records</li>
+                                        <li>• Progress reports</li>
+                                        <li>• Access controls</li>
+                                        <li>• User training</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-red-50 rounded-lg p-3">
+                                    <h4 class="font-semibold text-red-800 mb-2">Out of Scope</h4>
+                                    <ul class="text-red-700 space-y-1">
+                                        <li>• Other HR processes</li>
+                                        <li>• Payroll system</li>
+                                        <li>• Other training types</li>
+                                        <li>• Legacy data archival</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dtv-primary mb-3">Key Metrics</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-dtv-light rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-dtv-primary">12</div>
+                                    <div class="text-sm text-gray-600">Weeks Duration</div>
+                                </div>
+                                <div class="bg-dtv-light rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-dtv-primary">€100K</div>
+                                    <div class="text-sm text-gray-600">Budget</div>
+                                </div>
+                                <div class="bg-dtv-light rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-dtv-primary">27</div>
+                                    <div class="text-sm text-gray-600">Activities</div>
+                                </div>
+                                <div class="bg-dtv-light rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-dtv-primary">6</div>
+                                    <div class="text-sm text-gray-600">Phases</div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-dtv-primary mt-6 mb-3">Success Criteria</h3>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    100% data migrated to secure platform
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Zero unauthorized access incidents
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    GDPR compliance certification
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Audit passed without findings
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Breakdown Structure -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">3.2 Work Breakdown Structure (WBS)</h2>
+                </div>
+                <div class="p-6 md:p-8">
+
+                    <!-- Phase 1 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">1</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 1: Assessment & Discovery</h3>
+                                    <p class="text-sm text-gray-600">Duration: 2 weeks | Owner: IT Security Lead</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1.1</td>
+                                                <td>Data inventory and classification</td>
+                                                <td>IT Security Lead</td>
+                                                <td>5 days</td>
+                                                <td>Data Inventory Report</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1.2</td>
+                                                <td>Current state security gap analysis</td>
+                                                <td>IT Security Lead</td>
+                                                <td>3 days</td>
+                                                <td>Gap Analysis Report</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1.3</td>
+                                                <td>Requirements gathering with stakeholders</td>
+                                                <td>Business Analyst</td>
+                                                <td>5 days</td>
+                                                <td>Requirements Document</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">2</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 2: Solution Design</h3>
+                                    <p class="text-sm text-gray-600">Duration: 2 weeks | Owner: IT Architect</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2.1</td>
+                                                <td>Vendor evaluation and RFP</td>
+                                                <td>IT + Procurement</td>
+                                                <td>10 days</td>
+                                                <td>Vendor Scorecard</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.2</td>
+                                                <td>Solution architecture design</td>
+                                                <td>IT Architect</td>
+                                                <td>5 days</td>
+                                                <td>Technical Design Doc</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.3</td>
+                                                <td>Access control matrix design</td>
+                                                <td>IT Security</td>
+                                                <td>3 days</td>
+                                                <td>RBAC Matrix</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">3</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 3: Implementation</h3>
+                                    <p class="text-sm text-gray-600">Duration: 3 weeks | Owner: IT Team Lead</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>3.1</td>
+                                                <td>Environment setup and configuration</td>
+                                                <td>IT Infrastructure</td>
+                                                <td>5 days</td>
+                                                <td>Environment Ready</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3.2</td>
+                                                <td>Data migration - Sprint 1</td>
+                                                <td>IT Team</td>
+                                                <td>5 days</td>
+                                                <td>Migration Report v1</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3.3</td>
+                                                <td>Data migration - Sprint 2</td>
+                                                <td>IT Team</td>
+                                                <td>5 days</td>
+                                                <td>Migration Report v2</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">4</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 4: Testing & Validation</h3>
+                                    <p class="text-sm text-gray-600">Duration: 2 weeks | Owner: QA Lead</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>4.1</td>
+                                                <td>Security penetration testing</td>
+                                                <td>IT Security</td>
+                                                <td>5 days</td>
+                                                <td>Pentest Report</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4.2</td>
+                                                <td>User acceptance testing (UAT)</td>
+                                                <td>QA + Business</td>
+                                                <td>5 days</td>
+                                                <td>UAT Sign-off</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 5 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">5</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 5: Deployment & Training</h3>
+                                    <p class="text-sm text-gray-600">Duration: 2 weeks | Owner: Change Management</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>5.1</td>
+                                                <td>User training sessions</td>
+                                                <td>Change Mgmt</td>
+                                                <td>3 days</td>
+                                                <td>Training Materials</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5.2</td>
+                                                <td>Go-live deployment</td>
+                                                <td>IT + Business</td>
+                                                <td>2 days</td>
+                                                <td>Go-live Checklist</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5.3</td>
+                                                <td>Hypercare support period</td>
+                                                <td>IT Support</td>
+                                                <td>5 days</td>
+                                                <td>Support Log</td>
+                                                <td>Agile</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 6 -->
+                    <div class="mb-8">
+                        <div class="accordion-header flex items-center justify-between p-4 bg-dtv-light rounded-lg cursor-pointer hover:bg-dtv-light/70">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-dtv-primary text-white rounded-lg flex items-center justify-center font-bold mr-4">6</span>
+                                <div>
+                                    <h3 class="font-bold text-dtv-primary">Phase 6: Closure & Handover</h3>
+                                    <p class="text-sm text-gray-600">Duration: 1 week | Owner: Project Manager</p>
+                                </div>
+                            </div>
+                            <svg class="accordion-icon w-6 h-6 text-dtv-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                        <div class="accordion-content overflow-hidden">
+                            <div class="p-4 border-l-4 border-dtv-primary ml-5 mt-2">
+                                <div class="overflow-x-auto">
+                                    <table class="data-table text-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>WBS</th>
+                                                <th>Activity</th>
+                                                <th>Owner</th>
+                                                <th>Duration</th>
+                                                <th>Deliverable</th>
+                                                <th>Methodology</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>6.1</td>
+                                                <td>Legacy system decommissioning</td>
+                                                <td>IT Security</td>
+                                                <td>3 days</td>
+                                                <td>Decom Certificate</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6.2</td>
+                                                <td>Post-implementation review</td>
+                                                <td>Project Manager</td>
+                                                <td>2 days</td>
+                                                <td>PIR Report</td>
+                                                <td>Waterfall</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RACI Matrix -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">3.3 RACI Matrix</h2>
+                </div>
+                <div class="p-6 md:p-8 overflow-x-auto">
+                    <table class="data-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Phase</th>
+                                <th>Project Sponsor</th>
+                                <th>Project Manager</th>
+                                <th>IT Security</th>
+                                <th>IT Team</th>
+                                <th>HR/TM</th>
+                                <th>Finance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">1. Assessment</td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">2. Design</td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">3. Implementation</td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">4. Testing</td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">5. Deployment</td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs">I</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">6. Closure</td>
+                                <td><span class="badge badge-medium">A</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-high">R</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                                <td><span class="badge badge-low">C</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-4 flex flex-wrap gap-4 text-sm">
+                        <div class="flex items-center"><span class="badge badge-high mr-2">R</span> Responsible</div>
+                        <div class="flex items-center"><span class="badge badge-medium mr-2">A</span> Accountable</div>
+                        <div class="flex items-center"><span class="badge badge-low mr-2">C</span> Consulted</div>
+                        <div class="flex items-center"><span class="px-2 py-1 bg-gray-100 rounded text-gray-600 text-xs mr-2">I</span> Informed</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gantt Chart -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white">3.4 Project Timeline - Gantt Chart</h2>
+                    <span class="text-sm text-dtv-light">Scroll horizontally to view full timeline</span>
+                </div>
+                <div class="p-4 md:p-8 gantt-container overflow-x-auto">
+                    <div class="mermaid min-w-[900px]">
+gantt
+    title DTV Data Security Remediation Project
+    dateFormat YYYY-MM-DD
+    excludes weekends
+
+    section Assessment
+    Data inventory and classification     :crit, a1, 2025-01-06, 5d
+    Security gap analysis                 :a2, after a1, 3d
+    Requirements gathering                :a3, after a1, 5d
+    Assessment Complete                   :milestone, m1, after a3, 0d
+
+    section Design
+    Vendor evaluation RFP                 :b1, after m1, 10d
+    Solution architecture design          :b2, after m1, 5d
+    Access control matrix design          :b3, after b2, 3d
+    Design Complete                       :milestone, m2, after b1, 0d
+
+    section Implementation
+    Environment setup                     :crit, c1, after m2, 5d
+    Data migration Sprint 1               :crit, c2, after c1, 5d
+    Data migration Sprint 2               :crit, c3, after c2, 5d
+    Migration Complete                    :milestone, m3, after c3, 0d
+
+    section Testing
+    Security penetration testing          :d1, after m3, 5d
+    User acceptance testing UAT           :d2, after d1, 5d
+    Testing Complete                      :milestone, m4, after d2, 0d
+
+    section Deployment
+    User training sessions                :e1, after m4, 3d
+    Go-live deployment                    :crit, e2, after e1, 2d
+    Hypercare support                     :e3, after e2, 5d
+    Go-Live Complete                      :milestone, m5, after e3, 0d
+
+    section Closure
+    Legacy decommissioning                :crit, f1, after m5, 3d
+    Post-implementation review            :f2, after f1, 2d
+    Project Complete                      :milestone, m6, after f2, 0d
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4 border-t">
+                    <div class="flex flex-wrap gap-4 text-sm">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-red-500 mr-2"></div>
+                            <span>Critical Path</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded bg-dtv-primary mr-2"></div>
+                            <span>Standard Tasks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded-full bg-dtv-accent mr-2"></div>
+                            <span>Milestones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">3.5 Budget Estimate</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-bold text-dtv-primary mb-4">Budget by Category</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm text-gray-600">Personnel (52%)</span>
+                                        <span class="font-medium">€52,000</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-3">
+                                        <div class="bg-dtv-primary h-3 rounded-full" style="width: 52%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm text-gray-600">Technology (18%)</span>
+                                        <span class="font-medium">€18,000</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-3">
+                                        <div class="bg-dtv-secondary h-3 rounded-full" style="width: 18%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm text-gray-600">External Services (15.5%)</span>
+                                        <span class="font-medium">€15,500</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-3">
+                                        <div class="bg-dtv-accent h-3 rounded-full" style="width: 15.5%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm text-gray-600">Training (5%)</span>
+                                        <span class="font-medium">€5,000</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-3">
+                                        <div class="bg-green-500 h-3 rounded-full" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm text-gray-600">Contingency (10%)</span>
+                                        <span class="font-medium">€10,000</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-3">
+                                        <div class="bg-amber-500 h-3 rounded-full" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 p-4 bg-dtv-light rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-dtv-primary">TOTAL BUDGET</span>
+                                    <span class="text-2xl font-bold text-dtv-primary">€100,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dtv-primary mb-4">ROI Analysis</h3>
+                            <div class="bg-green-50 rounded-xl p-6">
+                                <div class="text-center mb-4">
+                                    <div class="text-4xl font-bold text-green-600">180-710%</div>
+                                    <div class="text-sm text-green-700">Projected ROI</div>
+                                </div>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">GDPR Fine Risk Eliminated</span>
+                                        <span class="font-medium text-green-700">Up to €20M</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Reputational Risk Mitigation</span>
+                                        <span class="font-medium text-green-700">€500K-2M</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Audit Remediation Savings</span>
+                                        <span class="font-medium text-green-700">€50-100K</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Efficiency Improvements</span>
+                                        <span class="font-medium text-green-700">€30K/year</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                                <h4 class="font-semibold text-amber-800 mb-2">Investment Justification</h4>
+                                <p class="text-sm text-amber-700">
+                                    The €100K investment protects against potential €20M+ GDPR fines,
+                                    representing a minimum 180:1 risk-to-investment ratio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Register -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">3.6 Risk Register</h2>
+                </div>
+                <div class="p-6 md:p-8 overflow-x-auto">
+                    <table class="data-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Risk ID</th>
+                                <th>Description</th>
+                                <th>Probability</th>
+                                <th>Impact</th>
+                                <th>Score</th>
+                                <th>Mitigation Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">R-001</td>
+                                <td>Data migration errors causing data loss</td>
+                                <td><span class="badge badge-medium">Medium</span></td>
+                                <td><span class="badge badge-critical">High</span></td>
+                                <td><span class="badge badge-high">12</span></td>
+                                <td>Multiple backup strategies, incremental migration, rollback plan</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">R-002</td>
+                                <td>Vendor delays in system provisioning</td>
+                                <td><span class="badge badge-medium">Medium</span></td>
+                                <td><span class="badge badge-medium">Medium</span></td>
+                                <td><span class="badge badge-medium">9</span></td>
+                                <td>Include SLAs in contract, identify backup vendors</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">R-003</td>
+                                <td>User resistance to new system</td>
+                                <td><span class="badge badge-high">High</span></td>
+                                <td><span class="badge badge-low">Low</span></td>
+                                <td><span class="badge badge-medium">8</span></td>
+                                <td>Change management program, early stakeholder engagement</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">R-004</td>
+                                <td>Budget overrun</td>
+                                <td><span class="badge badge-low">Low</span></td>
+                                <td><span class="badge badge-medium">Medium</span></td>
+                                <td><span class="badge badge-low">6</span></td>
+                                <td>10% contingency buffer, weekly cost tracking</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center">
+            <a href="process-analysis.html" class="flex items-center text-dtv-secondary hover:text-dtv-primary transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Previous: Process Analysis
+            </a>
+            <a href="deliverable.html" class="flex items-center px-6 py-3 bg-dtv-primary text-white rounded-lg hover:bg-dtv-secondary transition-colors">
+                Next: Deliverable
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dtv-dark text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">DATA-7005 / DBI-7004 - Business Problem Solving</p>
+                    <p class="text-sm text-gray-400">Assessment 2 - Business Process Diagnosis + Action Plan Report</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-400">December 2024</p>
+                    <p class="text-sm text-gray-500">Prepared for DTV Corporation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

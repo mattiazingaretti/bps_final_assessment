@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Analysis | DTV Business Process Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dtv-primary': '#003366',
+                        'dtv-secondary': '#0066CC',
+                        'dtv-accent': '#00A3E0',
+                        'dtv-light': '#E6F2FF',
+                        'dtv-dark': '#001A33',
+                        'critical': '#DC2626',
+                        'high': '#F59E0B',
+                        'medium': '#3B82F6',
+                        'low': '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dtv-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-dtv-accent rounded-lg flex items-center justify-center font-bold text-xl">DTV</div>
+                        <span class="font-semibold text-lg hidden sm:block">Business Process Report</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Home</a>
+                    <a href="process-diagram.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Process Diagram</a>
+                    <a href="process-analysis.html" class="px-4 py-2 rounded-lg bg-dtv-secondary text-white font-medium">Analysis</a>
+                    <a href="action-plan.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Action Plan</a>
+                    <a href="deliverable.html" class="px-4 py-2 rounded-lg hover:bg-dtv-secondary/50 transition-colors">Content Structure</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-dtv-secondary/50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-dtv-dark">
+            <div class="px-4 py-3 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Home</a>
+                <a href="process-diagram.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Process Diagram</a>
+                <a href="process-analysis.html" class="block px-4 py-2 rounded-lg bg-dtv-secondary">Analysis</a>
+                <a href="action-plan.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Action Plan</a>
+                <a href="deliverable.html" class="block px-4 py-2 rounded-lg hover:bg-dtv-secondary/50">Content Structure</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-dtv-primary to-dtv-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-dtv-light text-sm mb-4">
+                <a href="../index.html" class="hover:text-white">Home</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span>Process Analysis</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-dtv-accent/20 text-dtv-light text-sm font-medium rounded-full mb-4">
+                        Task 2 - 30 Marks
+                    </span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">Process Analysis</h1>
+                    <p class="text-dtv-light text-lg">Issues Identification & Improvement Opportunities</p>
+                </div>
+                <div class="hidden md:block">
+                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Tabs Navigation -->
+        <div class="mb-8">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-4 overflow-x-auto" aria-label="Tabs">
+                    <button data-tab-target="issues" class="tab-button active px-6 py-3 rounded-t-lg font-medium whitespace-nowrap" style="background-color: #003366; color: #ffffff;">
+                        Issues (4)
+                    </button>
+                    <button data-tab-target="improvements" class="tab-button px-6 py-3 rounded-t-lg font-medium whitespace-nowrap text-gray-600 hover:text-[#003366] bg-transparent">
+                        Improvements (4)
+                    </button>
+                    <button data-tab-target="matrix" class="tab-button px-6 py-3 rounded-t-lg font-medium whitespace-nowrap text-gray-600 hover:text-[#003366] bg-transparent">
+                        Risk Matrix
+                    </button>
+                    <button data-tab-target="priority" class="tab-button px-6 py-3 rounded-t-lg font-medium whitespace-nowrap text-gray-600 hover:text-[#003366] bg-transparent">
+                        Prioritization
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Issues Tab -->
+        <div data-tab-content="issues" class="tab-content active">
+            <div class="space-y-6">
+
+                <!-- Issue 1 - Critical -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden issue-card critical">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-dtv-light text-dtv-primary font-bold rounded-lg text-lg">ISS-001</span>
+                                <span class="badge badge-critical">CRITICAL</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">Talent Management / IT Security</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Critical Data Security Vulnerability</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Detailed Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Sensitive employee personal data including performance evaluations, attendance records,
+                                    and TOEIC examination results are stored in an Excel file named "English Students 2012 Final Version"
+                                    on a Google Drive folder with <strong>public access</strong>. This represents a severe data protection
+                                    vulnerability with potential GDPR compliance implications.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Associated Implications</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-critical mr-2">•</span>
+                                        GDPR non-compliance: potential fines up to €20M or 4% of global revenue
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-critical mr-2">•</span>
+                                        Employee privacy breach and trust erosion
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-critical mr-2">•</span>
+                                        Reputational damage if data breach occurs
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-critical mr-2">•</span>
+                                        Internal audit failure - immediate finding
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-red-50 rounded-lg border border-red-200">
+                            <h4 class="font-semibold text-red-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                Evidence Source
+                            </h4>
+                            <p class="text-red-700 text-sm italic">
+                                "Findings and conclusions are recorded in an Excel spreadsheet ('English Students 2012 Final Version')
+                                and stored in a shared Google Drive with public access." — Activity 4, Case Study
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 2 - High -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden issue-card high">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-dtv-light text-dtv-primary font-bold rounded-lg text-lg">ISS-002</span>
+                                <span class="badge badge-high">HIGH</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">Talent Management</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Absence of Standardized Evaluation Criteria</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Detailed Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    The process lacks standardized criteria for evaluating employee progress and determining
+                                    reimbursement eligibility. Different Talent Management analysts apply inconsistent methods:
+                                    some conduct fortnightly progress meetings while others rely solely on TOEIC examination results.
+                                    This leads to subjective and potentially unfair decisions.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Associated Implications</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-high mr-2">•</span>
+                                        Inconsistent treatment of employees across the organization
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-high mr-2">•</span>
+                                        Potential discrimination claims
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-high mr-2">•</span>
+                                        Audit finding: lack of control standardization
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-high mr-2">•</span>
+                                        Employee dissatisfaction and demotivation
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                            <h4 class="font-semibold text-amber-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                Evidence Source
+                            </h4>
+                            <p class="text-amber-700 text-sm italic">
+                                "Sometimes, we might struggle a bit with reimbursements because it pretty much depends on what criteria
+                                we use to determine eligibility. Some of us are more picky around examining the progress... Others are
+                                more result oriented." — Employee Comment, Appendix
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 3 - Medium -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden issue-card medium">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-dtv-light text-dtv-primary font-bold rounded-lg text-lg">ISS-003</span>
+                                <span class="badge badge-medium">MEDIUM</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">HR / Process Owner</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Process Not Formally Documented</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Detailed Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    The language course enrollment process lacks formal documentation including Standard Operating
+                                    Procedures (SOPs), process flowcharts, and policy documents. The process relies entirely on
+                                    institutional knowledge ("tribal knowledge") passed down informally between employees.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Associated Implications</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Knowledge loss when employees leave
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Inconsistent process execution
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Difficulty training new employees
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Audit finding: absence of process documentation
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                                Evidence Source
+                            </h4>
+                            <p class="text-blue-700 text-sm italic">
+                                "This is the best process I've ever seen… it's so effective that it's not even documented.
+                                Everyone in the organization knows it by heart because it's SO EASY!" — Employee Comment, Appendix
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue 4 - Medium -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden issue-card medium">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-dtv-light text-dtv-primary font-bold rounded-lg text-lg">ISS-004</span>
+                                <span class="badge badge-medium">MEDIUM</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">HR / IT</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Manual Legacy Systems and Processes</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Detailed Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    The process relies on outdated manual systems: an Excel spreadsheet from 2012, email-based
+                                    approval workflows, and paper-based reimbursement forms. There is no integrated HR system
+                                    or workflow automation. This creates inefficiencies, delays, and error-prone operations.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Associated Implications</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        High administrative burden
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Data entry errors and inconsistencies
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        No audit trail for approvals
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-medium mr-2">•</span>
+                                        Employee frustration with manual processes
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-2 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                </svg>
+                                Evidence Source
+                            </h4>
+                            <p class="text-blue-700 text-sm italic">
+                                "I feel very supported by the Talent Management team, even when they request me to submit all tickets
+                                and expenses using manual reimbursement forms." — Employee Comment, Appendix
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Improvements Tab -->
+        <div data-tab-content="improvements" class="tab-content">
+            <div class="space-y-6">
+
+                <!-- Improvement 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-l-4 border-green-500">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-green-100 text-green-800 font-bold rounded-lg text-lg">IMP-001</span>
+                                <span class="badge badge-urgent">URGENT</span>
+                                <span class="text-sm text-gray-500">→ Addresses ISS-001</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">IT / Talent Management</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Implement Secure HRIS with Role-Based Access Control</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Deploy an enterprise-grade Human Resource Information System (HRIS) such as SAP SuccessFactors,
+                                    Workday, or Oracle HCM with role-based access control (RBAC), data encryption at rest and in transit,
+                                    and comprehensive audit logging. Migrate all employee training data from Google Drive to this secure platform.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Expected Benefits</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        100% GDPR compliance for employee data
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Eliminate €20M+ fine risk
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Full audit trail for all data access
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Immediate audit readiness
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Priority</div>
+                                <div class="font-bold text-red-600">URGENT</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Complexity</div>
+                                <div class="font-bold text-amber-600">HIGH</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Quick Win</div>
+                                <div class="font-bold text-green-600">2-4 weeks</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Full Solution</div>
+                                <div class="font-bold text-blue-600">8-12 weeks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Improvement 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-l-4 border-green-500">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-green-100 text-green-800 font-bold rounded-lg text-lg">IMP-002</span>
+                                <span class="badge badge-urgent">URGENT</span>
+                                <span class="text-sm text-gray-500">→ Addresses ISS-002</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">Talent Management</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Establish Standardized Evaluation Framework</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Develop and implement a weighted scoring model for evaluating employee progress. Define clear,
+                                    measurable criteria including TOEIC score improvement (40%), attendance rate (20%),
+                                    assignment completion (20%), and participation quality (20%). Create automated scoring
+                                    calculators and decision matrices.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Expected Benefits</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        100% consistency in evaluations
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Eliminate subjective decision-making
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Clear expectations for employees
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Defensible reimbursement decisions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Priority</div>
+                                <div class="font-bold text-red-600">URGENT</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Complexity</div>
+                                <div class="font-bold text-amber-600">MEDIUM</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Quick Win</div>
+                                <div class="font-bold text-green-600">3-4 weeks</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Full Solution</div>
+                                <div class="font-bold text-blue-600">6-8 weeks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Improvement 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-l-4 border-blue-500">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-green-100 text-green-800 font-bold rounded-lg text-lg">IMP-003</span>
+                                <span class="badge badge-high">HIGH</span>
+                                <span class="text-sm text-gray-500">→ Addresses ISS-003</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">HR / Quality</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Create Comprehensive Process Documentation</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Develop a complete documentation package including Standard Operating Procedures (SOPs),
+                                    BPMN process flowcharts, RACI responsibility matrix, policy documents, and training materials.
+                                    Publish on company intranet with version control and periodic review schedule.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Expected Benefits</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Preserve institutional knowledge
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Faster onboarding of new employees
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Audit-ready documentation
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Consistent process execution
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Priority</div>
+                                <div class="font-bold text-amber-600">HIGH</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Complexity</div>
+                                <div class="font-bold text-green-600">LOW</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Quick Win</div>
+                                <div class="font-bold text-green-600">2-3 weeks</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Full Solution</div>
+                                <div class="font-bold text-blue-600">6-8 weeks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Improvement 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-l-4 border-blue-500">
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="px-4 py-2 bg-green-100 text-green-800 font-bold rounded-lg text-lg">IMP-004</span>
+                                <span class="badge badge-medium">MEDIUM</span>
+                                <span class="text-sm text-gray-500">→ Addresses ISS-004</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm text-gray-500">Responsible Area</span>
+                                <p class="font-medium text-gray-900">IT / HR</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Implement End-to-End Workflow Automation</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Description</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Deploy a workflow automation platform (e.g., ServiceNow, Microsoft Power Automate, or SAP Workflow)
+                                    to digitize the entire process from application submission to reimbursement. Include self-service
+                                    portal for employees, automated approval routing, progress tracking dashboard, and digital expense submission.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dtv-primary mb-2">Expected Benefits</h4>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Reduce processing time by 60%
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Eliminate manual data entry errors
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Complete audit trail for all actions
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-600 mr-2">✓</span>
+                                        Improved employee experience
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Priority</div>
+                                <div class="font-bold text-blue-600">MEDIUM</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Complexity</div>
+                                <div class="font-bold text-red-600">HIGH</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Quick Win</div>
+                                <div class="font-bold text-green-600">4-6 weeks</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 text-center">
+                                <div class="text-xs text-gray-500 mb-1">Full Solution</div>
+                                <div class="font-bold text-blue-600">20-24 weeks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Risk Matrix Tab -->
+        <div data-tab-content="matrix" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">Risk Heat Map: Impact vs Likelihood</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="overflow-x-auto">
+                        <div class="min-w-[600px]">
+                            <!-- Matrix Header -->
+                            <div class="grid grid-cols-4 gap-1 mb-1">
+                                <div class="p-4 bg-gray-100 font-bold text-center text-gray-700"></div>
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">Low Likelihood</div>
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">Medium Likelihood</div>
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">High Likelihood</div>
+                            </div>
+
+                            <!-- High Impact Row -->
+                            <div class="grid grid-cols-4 gap-1 mb-1">
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">High Impact</div>
+                                <div class="p-4 bg-amber-200 text-center">
+                                    <span class="text-amber-800 font-medium">Medium Risk</span>
+                                </div>
+                                <div class="p-4 bg-red-300 text-center">
+                                    <div class="font-bold text-red-900">ISS-001</div>
+                                    <span class="text-red-800 text-sm">Data Security</span>
+                                </div>
+                                <div class="p-4 bg-red-500 text-center">
+                                    <span class="text-white font-bold">Critical</span>
+                                </div>
+                            </div>
+
+                            <!-- Medium Impact Row -->
+                            <div class="grid grid-cols-4 gap-1 mb-1">
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">Medium Impact</div>
+                                <div class="p-4 bg-green-200 text-center">
+                                    <div class="font-bold text-green-900">ISS-003</div>
+                                    <span class="text-green-800 text-sm">No Documentation</span>
+                                </div>
+                                <div class="p-4 bg-amber-200 text-center">
+                                    <div class="font-bold text-amber-900">ISS-004</div>
+                                    <span class="text-amber-800 text-sm">Legacy Systems</span>
+                                </div>
+                                <div class="p-4 bg-red-300 text-center">
+                                    <div class="font-bold text-red-900">ISS-002</div>
+                                    <span class="text-red-800 text-sm">No Std Criteria</span>
+                                </div>
+                            </div>
+
+                            <!-- Low Impact Row -->
+                            <div class="grid grid-cols-4 gap-1">
+                                <div class="p-4 bg-dtv-primary text-white font-bold text-center">Low Impact</div>
+                                <div class="p-4 bg-green-100 text-center">
+                                    <span class="text-green-700 font-medium">Low Risk</span>
+                                </div>
+                                <div class="p-4 bg-green-200 text-center">
+                                    <span class="text-green-800 font-medium">Low Risk</span>
+                                </div>
+                                <div class="p-4 bg-amber-200 text-center">
+                                    <span class="text-amber-800 font-medium">Medium Risk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-red-500 rounded mr-2"></div>
+                            <span class="text-sm text-gray-600">Critical Risk</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-red-300 rounded mr-2"></div>
+                            <span class="text-sm text-gray-600">High Risk</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-amber-200 rounded mr-2"></div>
+                            <span class="text-sm text-gray-600">Medium Risk</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-green-200 rounded mr-2"></div>
+                            <span class="text-sm text-gray-600">Low Risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prioritization Tab -->
+        <div data-tab-content="priority" class="tab-content">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-dtv-primary px-6 py-4">
+                    <h2 class="text-xl font-bold text-white">Improvement Prioritization Matrix</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <p class="text-gray-600 mb-6">
+                        Scoring based on: Audit Risk (35%), Implementation Speed (25%), Complexity (20%), Business Impact (15%), Strategic Value (5%)
+                    </p>
+
+                    <div class="space-y-4">
+                        <!-- Priority 1 -->
+                        <div class="border-2 border-red-200 rounded-xl p-4 bg-red-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+                                    <div>
+                                        <span class="font-bold text-gray-900">IMP-002: Standardized Evaluation Framework</span>
+                                        <p class="text-sm text-gray-500">Score: 8.6/10</p>
+                                    </div>
+                                </div>
+                                <span class="badge badge-urgent">URGENT</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-red-600 h-3 rounded-full" style="width: 86%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Priority 2 -->
+                        <div class="border-2 border-red-200 rounded-xl p-4 bg-red-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+                                    <div>
+                                        <span class="font-bold text-gray-900">IMP-001: Secure HRIS Implementation</span>
+                                        <p class="text-sm text-gray-500">Score: 8.5/10</p>
+                                    </div>
+                                </div>
+                                <span class="badge badge-urgent">URGENT</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-red-600 h-3 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Priority 3 -->
+                        <div class="border-2 border-amber-200 rounded-xl p-4 bg-amber-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold">3</span>
+                                    <div>
+                                        <span class="font-bold text-gray-900">IMP-003: Process Documentation</span>
+                                        <p class="text-sm text-gray-500">Score: 8.0/10</p>
+                                    </div>
+                                </div>
+                                <span class="badge badge-high">HIGH</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-amber-500 h-3 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Priority 4 -->
+                        <div class="border-2 border-blue-200 rounded-xl p-4 bg-blue-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">4</span>
+                                    <div>
+                                        <span class="font-bold text-gray-900">IMP-004: Workflow Automation</span>
+                                        <p class="text-sm text-gray-500">Score: 5.1/10</p>
+                                    </div>
+                                </div>
+                                <span class="badge badge-medium">MEDIUM</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 51%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Implementation Roadmap -->
+                    <div class="mt-8 p-6 bg-gray-50 rounded-xl">
+                        <h3 class="font-bold text-dtv-primary mb-4">Recommended Implementation Roadmap</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-gray-900">Weeks 1-4: Quick Wins</h4>
+                                <p class="text-sm text-gray-600">IMP-001 + IMP-002 in parallel (interim controls)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-gray-900">Weeks 3-6: Documentation</h4>
+                                <p class="text-sm text-gray-600">IMP-003 Quick Win (audit-ready docs)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-gray-900">Months 2-3: Full Solutions</h4>
+                                <p class="text-sm text-gray-600">Complete IMP-001, IMP-002, IMP-003</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-gray-900">Months 4-6: Automation</h4>
+                                <p class="text-sm text-gray-600">IMP-004 Workflow Automation (post-audit)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-12">
+            <a href="process-diagram.html" class="flex items-center text-dtv-secondary hover:text-dtv-primary transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Previous: Process Diagram
+            </a>
+            <a href="action-plan.html" class="flex items-center px-6 py-3 bg-dtv-primary text-white rounded-lg hover:bg-dtv-secondary transition-colors">
+                Next: Action Plan
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dtv-dark text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm text-gray-400">DATA-7005 / DBI-7004 - Business Problem Solving</p>
+                    <p class="text-sm text-gray-400">Assessment 2 - Business Process Diagnosis + Action Plan Report</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-400">December 2024</p>
+                    <p class="text-sm text-gray-500">Prepared for DTV Corporation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
